@@ -1,5 +1,5 @@
 function loadLanguage(lang) {
-  fetch('lang/' + lang + '.json')
+  fetch('./lang/' + lang + '.json')
     .then(res => res.json())
     .then(data => {
       document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -13,11 +13,14 @@ function loadLanguage(lang) {
         }
       });
       document.documentElement.lang = lang;
-    });
+      localStorage.setItem('lang', lang);
+    })
+    .catch(err => console.error('Translation load error', err));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  loadLanguage('en');
+  const current = localStorage.getItem('lang') || 'en';
+  loadLanguage(current);
   document.querySelectorAll('.lang-switcher button').forEach(btn => {
     btn.addEventListener('click', () => loadLanguage(btn.dataset.lang));
   });
