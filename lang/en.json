@@ -1,0 +1,18 @@
+{
+  "title": "Counter-Strike 2 Guide",
+  "navHome": "Home",
+  "navGrenades": "Grenades",
+  "navTactics": "Tactics",
+  "navContacts": "Contacts",
+  "homeTitle": "Welcome to the CS2 Guide",
+  "homeDescription": "Learn grenades and tactics for Counter-Strike 2.",
+  "grenadesTitle": "Grenades",
+  "grenadesDescription": "Useful grenade lineups for popular maps.",
+  "tacticsTitle": "Tactics",
+  "tacticsDescription": "Strategies for Wingman and Competitive modes.",
+  "contactsTitle": "Contacts",
+  "contactsDescription": "Telegram: @ya_fa1d",
+  "mapMirage": "Mirage",
+  "mapInferno": "Inferno",
+  "mapNuke": "Nuke"
+}
