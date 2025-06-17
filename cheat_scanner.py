@@ -1,6 +1,16 @@
 import tkinter as tk
 from tkinter import ttk
 import winsound
+import random
+
+CHEATS = [
+    "XONE",
+    "Midnight",
+    "Predator.systems",
+    "Nixware",
+    "MemeSense",
+    "Neverlose",
+]
 
 class CheatScanner:
     def __init__(self, root):
@@ -13,7 +23,9 @@ class CheatScanner:
         self.update_progress(0)
 
     def update_progress(self, step):
-        if step <= 30:
+        if step < 30:
+            cheat = random.choice(CHEATS)
+            self.label.config(text=f"Scanning for {cheat}...")
             self.progress['value'] = step
             self.root.after(1000, self.update_progress, step + 1)
         else:
@@ -24,7 +36,7 @@ class CheatScanner:
         try:
             winsound.PlaySound('siren.wav', winsound.SND_FILENAME | winsound.SND_ASYNC)
         except Exception:
-            pass
+            winsound.Beep(1000, 1500)
         self.root.protocol("WM_DELETE_WINDOW", self.disable_close)
         self.root.after(5000, self.enable_close)
 
