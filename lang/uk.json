@@ -17,5 +17,9 @@
   "mapNuke": "Nuke",
   "mapDust2": "Dust2",
   "mapAnubis": "Anubis",
-  "mapAncient": "Ancient"
+  "mapAncient": "Ancient",
+  "navTicTacToe": "Хрестики-нулики",
+  "ticTitle": "Хрестики-нулики",
+  "ticChoose": "Виберіть X або O",
+  "ticReset": "Перезапустити гру"
 }

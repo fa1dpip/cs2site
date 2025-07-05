@@ -17,5 +17,9 @@
   "mapNuke": "Nuke",
   "mapDust2": "Dust2",
   "mapAnubis": "Anubis",
-  "mapAncient": "Ancient"
+  "mapAncient": "Ancient",
+  "navTicTacToe": "Tic Tac Toe",
+  "ticTitle": "Tic Tac Toe",
+  "ticChoose": "Choose X or O",
+  "ticReset": "Restart Game"
 }

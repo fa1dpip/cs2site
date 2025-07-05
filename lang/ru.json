@@ -17,5 +17,9 @@
   "mapNuke": "Nuke",
   "mapDust2": "Dust2",
   "mapAnubis": "Anubis",
-  "mapAncient": "Ancient"
+  "mapAncient": "Ancient",
+  "navTicTacToe": "Крестики-нолики",
+  "ticTitle": "Крестики-нолики",
+  "ticChoose": "Выберите X или O",
+  "ticReset": "Перезапустить игру"
 }
