@@ -2,6 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const cells = Array.from(document.querySelectorAll('.tic-cell'));
   const message = document.getElementById('tic-message');
   const resetBtn = document.getElementById('tic-reset');
+  const choiceBox = document.getElementById('tic-choice');
+  const chooseX = document.getElementById('choose-x');
+  const chooseO = document.getElementById('choose-o');
+
+  let playerSymbol = null;
+  let aiSymbol = null;
   let currentPlayer = 'X';
   const board = Array(9).fill(null);
 
@@ -24,25 +30,85 @@ document.addEventListener('DOMContentLoaded', () => {
     return board.every(Boolean);
   }
 
+  function evaluate() {
+    if (checkWin(playerSymbol)) {
+      message.textContent = 'You win!';
+      return true;
+    }
+    if (checkWin(aiSymbol)) {
+      message.textContent = 'AI wins!';
+      return true;
+    }
+    if (checkDraw()) {
+      message.textContent = 'Draw!';
+      return true;
+    }
+    return false;
+  }
+
+  function aiMove() {
+    const free = board
+      .map((v, i) => (v ? null : i))
+      .filter(i => i !== null);
+    if (free.length === 0) return;
+    const idx = free[Math.floor(Math.random() * free.length)];
+    board[idx] = aiSymbol;
+    cells[idx].textContent = aiSymbol;
+    cells[idx].classList.add('taken');
+  }
+
   function handleClick(e) {
     const idx = cells.indexOf(e.target);
-    if (board[idx] || message.textContent) return;
-    board[idx] = currentPlayer;
-    e.target.textContent = currentPlayer;
+    if (
+      board[idx] ||
+      message.textContent ||
+      currentPlayer !== playerSymbol ||
+      !playerSymbol
+    )
+      return;
+
+    board[idx] = playerSymbol;
+    e.target.textContent = playerSymbol;
     e.target.classList.add('taken');
 
-    if (checkWin(currentPlayer)) {
-      message.textContent = `${currentPlayer} wins!`;
-    } else if (checkDraw()) {
-      message.textContent = 'Draw!';
-    } else {
-      currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-    }
+    if (evaluate()) return;
+
+    currentPlayer = aiSymbol;
+    setTimeout(() => {
+      aiMove();
+      if (evaluate()) return;
+      currentPlayer = playerSymbol;
+    }, 300);
   }
 
   cells.forEach(cell => cell.addEventListener('click', handleClick));
 
+  function startGame(sym) {
+    playerSymbol = sym;
+    aiSymbol = sym === 'X' ? 'O' : 'X';
+    currentPlayer = 'X';
+    choiceBox.style.display = 'none';
+    message.textContent = '';
+    board.fill(null);
+    cells.forEach(c => {
+      c.textContent = '';
+      c.classList.remove('taken');
+    });
+    if (aiSymbol === 'X') {
+      currentPlayer = aiSymbol;
+      aiMove();
+      evaluate();
+      currentPlayer = playerSymbol;
+    }
+  }
+
+  chooseX.addEventListener('click', () => startGame('X'));
+  chooseO.addEventListener('click', () => startGame('O'));
+
   resetBtn.addEventListener('click', () => {
+    choiceBox.style.display = 'block';
+    playerSymbol = null;
+    aiSymbol = null;
     board.fill(null);
     cells.forEach(c => {
       c.textContent = '';

@@ -127,6 +127,17 @@ footer {
   }
 }
 
+.tic-choice {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.tic-choice button {
+  margin: 0 5px;
+  padding: 8px 16px;
+  font-size: 16px;
+}
+
 /* Tic Tac Toe styles */
 .tic-board {
   display: grid;

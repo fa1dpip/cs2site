@@ -20,5 +20,6 @@
   "mapAncient": "Ancient",
   "navTicTacToe": "Хрестики-нулики",
   "ticTitle": "Хрестики-нулики",
+  "ticChoose": "Виберіть X або O",
   "ticReset": "Перезапустити гру"
 }

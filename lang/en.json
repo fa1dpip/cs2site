@@ -20,5 +20,6 @@
   "mapAncient": "Ancient",
   "navTicTacToe": "Tic Tac Toe",
   "ticTitle": "Tic Tac Toe",
+  "ticChoose": "Choose X or O",
   "ticReset": "Restart Game"
 }

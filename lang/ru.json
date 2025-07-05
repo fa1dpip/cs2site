@@ -20,5 +20,6 @@
   "mapAncient": "Ancient",
   "navTicTacToe": "Крестики-нолики",
   "ticTitle": "Крестики-нолики",
+  "ticChoose": "Выберите X или O",
   "ticReset": "Перезапустить игру"
 }
